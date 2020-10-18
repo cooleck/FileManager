@@ -12,7 +12,8 @@ namespace FileManager
                 switch (operationCode)
                 {
                     case 0:
-                        
+                        Operations.DriverCd();
+                        break;
 
                     default:
                         throw new Exception("Operation doesn't exist!");
