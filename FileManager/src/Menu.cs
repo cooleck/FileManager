@@ -43,8 +43,7 @@ namespace FileManager
 
             while (true)
             {
-                // History.PrintHistory();
-                Console.Clear();
+                History.PrintHistory();
                 Console.WriteLine(Messages.welcomeMessage);
                 PrintListOfOperations(cursorItr, Console.Out);
                 ConsoleKey key = Console.ReadKey(true).Key;

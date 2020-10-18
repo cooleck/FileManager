@@ -7,7 +7,13 @@ namespace FileManager
     {
         public static void PrintHistory()
         {
+            for (int i = 0; i < 1000; ++i)
+            {
+                Console.WriteLine('\n');
+            }
+            
             Console.Clear();
+
             using (StreamReader historyFile = new StreamReader(@"OperationsHistory.txt"))
             {
                 string s;
@@ -20,13 +26,20 @@ namespace FileManager
 
         public static void AddMenuToHistory(int cursorItr)
         {
-            using (FileStream historyFile = new FileStream(@"OperationsHistory.txt", FileMode.Append, FileAccess.Write))
+            using (StreamWriter historyFile = new StreamWriter(@"OperationsHistory.txt", true))
             {
-                using (StreamWriter writer = new StreamWriter(historyFile))
+
+                foreach (var operation in Menu.operationsDict)
                 {
-                    TextWriter consoleOut = Console.Out;
-                    Menu.PrintListOfOperations(cursorItr, writer);
-                    Console.SetOut(consoleOut);
+                    if (operation.Key == cursorItr)
+                    {
+                        historyFile.Write($"{operation.Key + 1}.", true);
+                        historyFile.WriteLine($" {operation.Value} \t *");
+                    }
+                    else
+                    {
+                        historyFile.WriteLine("{0}. {1}", operation.Key + 1, operation.Value);
+                    }
                 }
             }
         }
@@ -39,15 +52,9 @@ namespace FileManager
 
         public static void WriteLine(string str)
         {
-            using (FileStream historyFile = new FileStream(@"OperationsHistory.txt", FileMode.Append, FileAccess.Write))
+            using (StreamWriter historyFile = new StreamWriter(@"OperationsHistory.txt", true))
             {
-                using (StreamWriter writer = new StreamWriter(historyFile))
-                {
-                    TextWriter consoleOut = Console.Out;
-                    Console.SetOut(writer);
-                    Console.WriteLine(str);
-                    Console.SetOut(consoleOut);
-                }
+                historyFile.WriteLine(str);
             }
         }
     }

@@ -20,13 +20,6 @@ namespace FileManager
                     default:
                         throw new Exception("Operation doesn't exist!");
                 }
-                
-                Console.WriteLine(Messages.continueMessage);
-                if (Console.ReadKey(true).Key == ConsoleKey.Escape)
-                {
-                    Console.WriteLine(Messages.byeMessage);
-                    return;
-                }
             }
         }
     }
