@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "6rnRQYI0yGXHKR7Kx5GaoQoKdvvdpkprC9U6yTDiPiPD7VtEhYvXU7FLOKVBG2aUxdAlh78iQKuKJbCg3YIBGw==",
+  "success": true,
+  "projectFilePath": "/home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/FileManager.csproj",
+  "expectedPackageFiles": [
+    "/home/cooleck/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.8/microsoft.aspnetcore.app.ref.3.1.8.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,11 @@
+/home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/bin/Debug/netcoreapp3.1/FileManager
+/home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/bin/Debug/netcoreapp3.1/FileManager.deps.json
+/home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/bin/Debug/netcoreapp3.1/FileManager.runtimeconfig.json
+/home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/bin/Debug/netcoreapp3.1/FileManager.runtimeconfig.dev.json
+/home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/bin/Debug/netcoreapp3.1/FileManager.dll
+/home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/bin/Debug/netcoreapp3.1/FileManager.pdb
+/home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/obj/Debug/netcoreapp3.1/FileManager.csprojAssemblyReference.cache
+/home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/obj/Debug/netcoreapp3.1/FileManager.AssemblyInfoInputs.cache
+/home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/obj/Debug/netcoreapp3.1/FileManager.AssemblyInfo.cs
+/home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/obj/Debug/netcoreapp3.1/FileManager.dll
+/home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/obj/Debug/netcoreapp3.1/FileManager.pdb

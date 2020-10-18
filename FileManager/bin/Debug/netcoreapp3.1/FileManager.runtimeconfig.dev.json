@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/home/cooleck/.dotnet/store/|arch|/|tfm|",
+      "/home/cooleck/.nuget/packages"
+    ]
+  }
+}
