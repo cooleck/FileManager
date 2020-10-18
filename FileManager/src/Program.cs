@@ -6,7 +6,18 @@ namespace FileManager
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int operationCode;
+            while ((operationCode = Menu.OperationMenu()) != -1) {
+
+                switch (operationCode)
+                {
+                    case 0:
+                        
+
+                    default:
+                        throw new Exception("Operation doesn't exist!");
+                }
+            }
         }
     }
 }
