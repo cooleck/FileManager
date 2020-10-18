@@ -11,36 +11,34 @@ namespace FileManager
         public static string byeMessage = "Пока";
     }
 
-    public static class Operaions
+    public static class Menu
     {
-        public static Dictionary<string, string> operationsDict = new Dictionary<string, string>()
+        public static Dictionary<int, string> operationsDict = new Dictionary<int, string>()
         {
-            ["operationListOfDisks"] = "Просмотр списка дисков компьютера и выбор диска.",
-            ["operationCdDir"] = "Переход в другую директорию (выбор папки).",
-            ["operationLs"] = "Просмотр списка файлов в директории.",
-            ["operationCatUTF-8"] = "Вывод содержимого текстового файла в консоль в кодировке UTF-8."
+            [0] = "Просмотр списка дисков компьютера и выбор диска.",
+            [1] = "Переход в другую директорию (выбор папки).",
+            [2] = "Просмотр списка файлов в директории.",
+            [3] = "Вывод содержимого текстового файла в консоль в кодировке UTF-8."
         };
 
         private static int PrintListOfOperations(int cursorItr)
         {
-            int itr = 0;
             int cursorPosition = -1;
             
             foreach (var opetaion in operationsDict)
             {
-                if (itr == cursorItr)
+                if (opetaion.Key == cursorItr)
                 {
                     cursorPosition = Console.CursorTop;
                 }
 
-                Console.WriteLine("{0}. {1}", itr + 1, opetaion.Value);
-                itr++;
+                Console.WriteLine("{0}. {1}", opetaion.Key + 1, opetaion.Value);
             }
 
             return cursorPosition;
         }
 
-        public static int operationMenu()
+        public static int OperationMenu()
         {
             int cursorItr = 0;
             int dictLength = operationsDict.Count;
