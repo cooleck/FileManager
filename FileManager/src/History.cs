@@ -5,12 +5,19 @@ namespace FileManager
 {
     public static class History
     {
+        private static string sep = "";
+
+        public static void MakeSep(int cnt)
+        {
+            for (int i = 0; i < cnt; ++i)
+            {
+                sep += '\n';
+            }
+        }
+
         public static void PrintHistory()
         {
-            for (int i = 0; i < 1000; ++i)
-            {
-                Console.WriteLine('\n');
-            }
+            Console.WriteLine(sep);
             
             Console.Clear();
 
@@ -26,22 +33,17 @@ namespace FileManager
 
         public static void AddMenuToHistory(int cursorItr)
         {
-            using (StreamWriter historyFile = new StreamWriter(@"OperationsHistory.txt", true))
+            TextWriter consoleOut = Console.Out;
+            
+            using (FileStream historyFile = new FileStream(@"OperationsHistory.txt", FileMode.Append, FileAccess.Write))
             {
-
-                foreach (var operation in Menu.operationsDict)
+                using (StreamWriter writer = new StreamWriter(historyFile))
                 {
-                    if (operation.Key == cursorItr)
-                    {
-                        historyFile.Write($"{operation.Key + 1}.", true);
-                        historyFile.WriteLine($" {operation.Value} \t *");
-                    }
-                    else
-                    {
-                        historyFile.WriteLine("{0}. {1}", operation.Key + 1, operation.Value);
-                    }
+                    Menu.PrintListOfOperations(cursorItr, writer, true);
                 }
             }
+            
+            Console.SetOut(consoleOut);
         }
 
         public static void WriteLineBoth(string str)
@@ -56,6 +58,11 @@ namespace FileManager
             {
                 historyFile.WriteLine(str);
             }
+        }
+        
+        public static void CleanHistory()
+        {
+            File.WriteAllText(@"OperationsHistory.txt", String.Empty);
         }
     }
 }

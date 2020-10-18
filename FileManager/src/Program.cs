@@ -6,7 +6,8 @@ namespace FileManager
     {
         static void Main(string[] args)
         {
-            Config.CleanHistory();
+            History.CleanHistory();
+            History.MakeSep(1000);
             Console.Clear();
             int operationCode;
             while ((operationCode = Menu.OperationMenu()) != -1) {

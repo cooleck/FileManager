@@ -15,7 +15,7 @@ namespace FileManager
             [3] = "Вывод содержимого текстового файла в консоль в кодировке UTF-8."
         };
 
-        public static void PrintListOfOperations(int cursorItr, TextWriter consoleOut)
+        public static void PrintListOfOperations(int cursorItr, TextWriter consoleOut, bool isHistory = false)
         {
             Console.SetOut(consoleOut);
 
@@ -26,7 +26,12 @@ namespace FileManager
                     Console.BackgroundColor = ConsoleColor.Gray;
                     Console.Write($"{operation.Key + 1}.", true);
                     Console.ResetColor();
-                    Console.WriteLine($" {operation.Value}");
+                    Console.Write($" {operation.Value}");
+                    if (isHistory)
+                    {
+                        Console.Write("\t <<");
+                    }
+                    Console.WriteLine();
                 }
                 else
                 {

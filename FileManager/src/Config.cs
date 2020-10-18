@@ -9,10 +9,7 @@ namespace FileManager
 {
     public static class Config
     {
-        public static void CleanHistory()
-        {
-            File.WriteAllText(@"OperationsHistory.txt", String.Empty);
-        }
+ 
     }
 
     public static class Messages
