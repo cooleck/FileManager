@@ -26,6 +26,10 @@ namespace FileManager
                         Operations.FileLs();
                         break;
                     
+                    case 4:
+                        Operations.FileCp();
+                        break;
+                    
                     default:
                         throw new Exception("Operation doesn't exist!");
                 }

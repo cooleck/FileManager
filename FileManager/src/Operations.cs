@@ -13,7 +13,8 @@ namespace FileManager
             [0] = "Просмотр списка дисков компьютера и выбор диска.",
             [1] = "Переход в другую директорию (выбор папки).",
             [2] = "Просмотр списка файлов в директории.",
-            [3] = "Вывод содержимого текстового файла в консоль в кодировке UTF-8."
+            [3] = "",
+            [4] = "Копирование файла."
         };
         
         public static List<string> encodingsList = new List<string>()
@@ -127,6 +128,58 @@ namespace FileManager
                     s = file.ReadLine();
                 }
             }
+        }
+
+        public static void FileCp()
+        {
+            History.WriteLineBoth(Messages.fileCpStart1Message);
+            string filePath = Console.ReadLine();
+            History.WriteLine(filePath);
+            if (!File.Exists(filePath))
+            {
+                History.WriteLineBoth(Errors.incorrectPathError);
+                return;
+            }
+
+            filePath = Path.GetFullPath(filePath);
+            
+            History.WriteLineBoth(Messages.fileCpStart2Message);
+            
+            string destPath = Console.ReadLine();
+            string destName = "";
+            History.WriteLine(destPath);
+            if (!File.Exists(destPath))
+            {
+                if (!Directory.Exists(destPath))
+                {
+                    History.WriteLineBoth(Errors.incorrectPathError);
+                    return;
+                }
+
+                destPath = Path.GetFullPath(destPath);
+                destPath = Path.GetFullPath(destPath + "/" + Path.GetFileName(filePath));
+            }
+            else
+            {
+                destPath = Path.GetFullPath(destPath);
+            }
+
+            try
+            {
+                File.Copy(filePath, destPath, true);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                History.WriteLineBoth(Errors.accessError);
+                return;
+            }
+            catch
+            {
+                History.WriteLineBoth(Errors.incorrectPathError);
+                return;
+            }
+            
+            History.WriteLineBoth($"Файл {filePath} скопирован в {destPath}");
         }
     }
 }

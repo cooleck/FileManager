@@ -43,19 +43,22 @@ namespace FileManager
     
     public static class Messages
     {
-        public static string welcomeMessage = "Привет";
-        public static string byeMessage = "Пока";
-        public static string driveCdStartMessage = "Выберите диск";
+        public static string welcomeMessage = "Привет!";
+        public static string byeMessage = "Пока(";
+        public static string driveCdStartMessage = "Выберите диск.";
         public static string actionCdCompeted = "Вы перешли в ";
-        public static string dirCdStartMessage = "Выберите папку";
+        public static string dirCdStartMessage = "Выберите папку.";
         public static string fileLsStartMessage = "Просмотр файлов. Выберите файл для вывода его содержимого.";
-        public static string fileEncodingStartMessage = "Выберите кодировку.";
+        public static string fileEncodingStartMessage = "Выберите кодировку:";
+        public static string fileCpStart1Message = "Введите название файла:";
+        public static string fileCpStart2Message = "Введите адрес копирования:";
     }
 
     public static class Errors
     {
         public static string unixError = "У Unix нет дисков!";
-        public static string dirNotFoundError = "Папка не найдена";
+        public static string dirNotFoundError = "Папка не найдена.";
+        public static string fileNotFound = "Файл не найден.";
         public static string accessError = "Отказано в доступе";
         public static string incorrectPathError = "Плохой путь.";
     }

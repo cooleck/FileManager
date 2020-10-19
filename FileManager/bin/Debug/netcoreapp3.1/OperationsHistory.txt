@@ -1,125 +1,22 @@
-Привет
+Привет!
 1. Просмотр списка дисков компьютера и выбор диска.
-2. Переход в другую директорию (выбор папки).	 <<
+2. Переход в другую директорию (выбор папки).
 3. Просмотр списка файлов в директории.
-4. Вывод содержимого текстового файла в консоль в кодировке UTF-8.
-Выберите папку
-/home/cooleck
-Вы перешли в /home/cooleck
-Привет
+4. 
+5. Копирование файла.	 <<
+Введите название файла:
+/home/cooleck/cheeck/file1.txt
+Введите адрес копирования:
+.
+Файл /home/cooleck/cheeck/file1.txt скопирован в /home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/bin/Debug/netcoreapp3.1/file1.txt
+Привет!
 1. Просмотр списка дисков компьютера и выбор диска.
 2. Переход в другую директорию (выбор папки).
-3. Просмотр списка файлов в директории.	 <<
-4. Вывод содержимого текстового файла в консоль в кодировке UTF-8.
-Просмотр файлов. Выберите файл для вывода его содержимого.
-1. .bash_logout
-2. .sqlite_history
-3. .lesshst
-4. .viminfo.tmp
-5. .viminfo
-6. q.png
-7. .zcompdump
-8. .lcrc
-9. .wget-hsts
-10. .zcompdump-myhostname-5.8
-11. .zcompdump-myhostname-5.6.2
-12. .esd_auth
-13. .v8flags.7.0.276.38-node.19.0f8281a86b95edde61ebd9373b331d4d.json
-14. Итоговое тестирование по курсу просмотр попытки.html
-15. .zcompdump-myhostname-5.7.1
-16. .steampath
-17. .bash_profile
-18. pas
-19. .zshrc1
-20. .yarnrc
-21. q1.png
-22. .steampid
-23. .zshrc
-24. .Xauthority
-25. murat_karioka
-26. .netrc
-27. .psql_history
-28. vottak2.png
-29. .zsh-history
-30. vottak.png
-31. .xinitrc
-32. .fehbg
-33. .zshrc.pre-oh-my-zsh
-34. q3.png
-35. .gitconfig
-36. .bashrc
-37. .emulator_console_auth_token
-38. .python_history
-39. .irb_history
-40. nohup.out
-41. .wpa_cli_history	 <<
-42. .zsh_history
-43. .bash_history
-44. .mysql_history
-Выберите кодировку.
-1. UTF-8	 <<
-2. UTF-7
-3. UTF-32
-4. ASCII
-scan
-Привет
-1. Просмотр списка дисков компьютера и выбор диска.
-2. Переход в другую директорию (выбор папки).
-3. Просмотр списка файлов в директории.	 <<
-4. Вывод содержимого текстового файла в консоль в кодировке UTF-8.
-Просмотр файлов. Выберите файл для вывода его содержимого.
-1. .bash_logout
-2. .sqlite_history
-3. .lesshst
-4. .viminfo.tmp
-5. .viminfo
-6. q.png
-7. .zcompdump
-8. .lcrc
-9. .wget-hsts
-10. .zcompdump-myhostname-5.8
-11. .zcompdump-myhostname-5.6.2
-12. .esd_auth
-13. .v8flags.7.0.276.38-node.19.0f8281a86b95edde61ebd9373b331d4d.json
-14. Итоговое тестирование по курсу просмотр попытки.html
-15. .zcompdump-myhostname-5.7.1
-16. .steampath
-17. .bash_profile
-18. pas
-19. .zshrc1
-20. .yarnrc
-21. q1.png
-22. .steampid
-23. .zshrc
-24. .Xauthority
-25. murat_karioka
-26. .netrc
-27. .psql_history
-28. vottak2.png
-29. .zsh-history
-30. vottak.png
-31. .xinitrc
-32. .fehbg
-33. .zshrc.pre-oh-my-zsh
-34. q3.png
-35. .gitconfig
-36. .bashrc	 <<
-37. .emulator_console_auth_token
-38. .python_history
-39. .irb_history
-40. nohup.out
-41. .wpa_cli_history
-42. .zsh_history
-43. .bash_history
-44. .mysql_history
-Выберите кодировку.
-1. UTF-8
-2. UTF-7
-3. UTF-32
-4. ASCII	 <<
-#
-#
-# If not running interactively, don't do anything
-
-PS1='[\u@\h \W]\$ '
-
+3. Просмотр списка файлов в директории.
+4. 
+5. Копирование файла.	 <<
+Введите название файла:
+/home/cooleck/cheeck/file2.txt
+Введите адрес копирования:
+/home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/bin/Debug/netcoreapp3.1/
+Файл /home/cooleck/cheeck/file2.txt скопирован в /home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/bin/Debug/netcoreapp3.1/file2.txt
