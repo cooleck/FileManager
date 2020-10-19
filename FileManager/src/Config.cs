@@ -9,6 +9,9 @@ using System.Text;
 
 namespace FileManager
 {
+    /// <summary>
+    /// Класс настроек: вспомогательных переменных и функций.
+    /// </summary>
     public static class Config
     {
         public static PlatformID Platform = Environment.OSVersion.Platform;
@@ -41,6 +44,9 @@ namespace FileManager
         }
     }
 
+    /// <summary>
+    /// Класс вспомогательных сообщений.
+    /// </summary>
     public static class Messages
     {
         public const string WelcomeMessage = "Привет! Текущая директория: ";
@@ -65,6 +71,9 @@ namespace FileManager
         public static string FileConc3Message = "Введите путь ко второму файлу из конкатенации:";
     }
 
+    /// <summary>
+    /// Класс ошибок.
+    /// </summary>
     public static class Errors
     {
         public const string UnixError = "У Unix-подобных систем нет дисков.\n";

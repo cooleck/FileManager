@@ -5,15 +5,27 @@ using System.Net;
 
 namespace FileManager
 {
+    /// <summary>
+    /// Общий класс для вывода меню выбора различных опций.
+    /// </summary>
     public static class Menu
     {
+        /// <summary>
+        /// Реализация вывода меню выбора опций.
+        /// </summary>
+        /// <param name="optionList">Список опций.</param>
+        /// <param name="cursorItr">Порядковый номер выбранной опции.</param>
+        /// <param name="consoleOut">Поток для смены стандартного потока вывода.</param>
+        /// <param name="isHistory">Флаг для проверки записи в историю действий.</param>
         public static void PrintListOfOptions(List<string> optionList, int cursorItr, TextWriter consoleOut,
             bool isHistory = false)
         {
+            // Смена стандартного потока вывода.
             Console.SetOut(consoleOut);
 
             int itr = 0;
-            
+
+            // Вывод меню по значению optionList.
             foreach (var option in optionList)
             {
                 if (itr == cursorItr)
@@ -36,10 +48,19 @@ namespace FileManager
 
                 itr++;
             }
-            
+
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Вызывает фукнцию вывода меню и обновляет его
+        /// при выборе опции, смене выбранной опции,
+        /// при нажатии Esc.
+        /// </summary>
+        /// <param name="optionsList">Список опций для выбора.</param>
+        /// <param name="startMessage">Сообщение в начале вывода меню.</param>
+        /// <param name="finishMessage">Сообщение в конце вывода меню.</param>
+        /// <returns></returns>
         public static int PrintMenu(List<string> optionsList, string startMessage = "", string finishMessage = "")
         {
             Console.CursorVisible = false;
@@ -53,6 +74,7 @@ namespace FileManager
                 return -1;
             }
 
+            // Ожидание выбора пользователя.
             while (true)
             {
                 History.PrintHistory();

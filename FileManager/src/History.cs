@@ -5,10 +5,17 @@ using System.Text;
 
 namespace FileManager
 {
+    /// <summary>
+    /// Класс работы с историей действий.
+    /// </summary>
     public static class History
     {
         private static string space = "";
 
+        /// <summary>
+        /// Вывод пробелов после Console.Clear().
+        /// </summary>
+        /// <param name="cnt"></param>
         public static void MakeSep(int cnt)
         {
             for (int i = 0; i < cnt; ++i)
@@ -17,10 +24,13 @@ namespace FileManager
             }
         }
 
+        /// <summary>
+        /// Вывод истории действий.
+        /// </summary>
         public static void PrintHistory()
         {
             Console.WriteLine(space);
-            
+
             Console.Clear();
 
             using (StreamReader historyFile = new StreamReader(Config.historyPath))
@@ -33,10 +43,15 @@ namespace FileManager
             }
         }
 
+        /// <summary>
+        /// Добавить меню выбора в историю.
+        /// </summary>
+        /// <param name="optionsList">Список опций добавляемого меню.</param>
+        /// <param name="cursorItr">Номер выбранного элемента.</param>
         public static void AddMenuToHistory(List<string> optionsList, int cursorItr)
         {
             TextWriter consoleOut = Console.Out;
-            
+
             using (FileStream historyFile = new FileStream(Config.historyPath, FileMode.Append, FileAccess.Write))
             {
                 using (StreamWriter writer = new StreamWriter(historyFile))
@@ -44,16 +59,20 @@ namespace FileManager
                     Menu.PrintListOfOptions(optionsList, cursorItr, writer, true);
                 }
             }
-            
+
             Console.SetOut(consoleOut);
         }
 
+        // Записать Object в историю действий и вывести в стандартный поток
+        // без переноса каретки на новую строку.
         public static void WriteBoth(Object str = null)
         {
             Console.Write(str);
             Write(str);
         }
-        
+
+        // Записать Object в историю действий и вывести в стандартный поток
+        // с переносом каретки на новую строку.
         public static void WriteLineBoth(Object str = null, Encoding encoding = null)
         {
             if (encoding == null)
@@ -66,7 +85,9 @@ namespace FileManager
             Console.OutputEncoding = Config.systemEncoding;
             WriteLine(str, encoding);
         }
-        
+
+        // Записать Object в историю действий
+        // без переноса каретки на новую строку.
         public static void Write(Object str = null)
         {
             using (StreamWriter historyFile = new StreamWriter(Config.historyPath, true))
@@ -75,6 +96,8 @@ namespace FileManager
             }
         }
 
+        // Записать Object в историю действий
+        // с переносом каретки на новую строку.
         public static void WriteLine(Object str = null, Encoding encoding = null)
         {
             if (encoding == null)
@@ -87,7 +110,8 @@ namespace FileManager
                 historyFile.WriteLine(str);
             }
         }
-        
+
+        // Очистить историю.
         public static void CleanHistory()
         {
             File.WriteAllText(Config.historyPath, String.Empty);
