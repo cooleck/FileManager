@@ -36,6 +36,8 @@ namespace FileManager
 
                 itr++;
             }
+            
+            Console.WriteLine();
         }
 
         public static int PrintMenu(List<string> optionsList, string startMessage = "", string finishMessage = "")
@@ -44,10 +46,18 @@ namespace FileManager
             int cursorItr = 0;
             int optionsListLength = optionsList.Count;
 
+            if (optionsListLength == 0)
+            {
+                History.WriteLineBoth(Errors.EmptyListError);
+                Console.CursorVisible = true;
+                return -1;
+            }
+
             while (true)
             {
                 History.PrintHistory();
-                Console.WriteLine(startMessage);
+                Console.Write(startMessage);
+                Console.WriteLine(Directory.GetCurrentDirectory());
                 PrintListOfOptions(optionsList, cursorItr, Console.Out);
                 ConsoleKey key = Console.ReadKey(true).Key;
 
@@ -62,7 +72,8 @@ namespace FileManager
                         break;
 
                     case ConsoleKey.Enter:
-                        History.WriteLine(startMessage);
+                        History.Write(startMessage);
+                        History.WriteLine(Directory.GetCurrentDirectory());
                         History.AddMenuToHistory(optionsList, cursorItr);
                         Console.CursorVisible = true;
                         return cursorItr;

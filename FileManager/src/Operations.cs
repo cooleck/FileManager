@@ -59,6 +59,7 @@ namespace FileManager
 
                 History.WriteBoth(Messages.ActionCdCompeted);
                 History.WriteLineBoth(Directory.GetCurrentDirectory());
+                History.WriteLineBoth();
             }
             else
             {
@@ -77,6 +78,7 @@ namespace FileManager
             }
             History.WriteBoth(Messages.ActionCdCompeted);
             History.WriteLineBoth(Directory.GetCurrentDirectory());
+            History.WriteLineBoth();
         }
 
         private static int PrintFileListMenu(List<string> fileList)
@@ -225,7 +227,7 @@ namespace FileManager
                 return;
             }
             
-            History.WriteLineBoth($"Файл {filePath} перемещен в {Path.GetDirectoryName(destPath)}");
+            History.WriteLineBoth($"Файл {filePath} перемещен в {Path.GetDirectoryName(destPath)}.");
         }
 
         public static void FileRm()
