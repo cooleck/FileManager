@@ -39,14 +39,31 @@ namespace FileManager
                     return;
                 }
 
-                Config.CurrentDirectory = driveList[driveItr];
+                if (!Config.SetCurrentDirectory(driveList[driveItr]))
+                {
+                    return;
+                }
+
                 History.WriteBoth(Messages.actionCdCompeted);
-                History.WriteLineBoth(Config.CurrentDirectory);
+                History.WriteLineBoth(Directory.GetCurrentDirectory());
             }
             else
             {
                 History.WriteLineBoth(Errors.unixError);
             }
+        }
+
+        public static void DirCd()
+        {
+            History.WriteLineBoth(Messages.dirCdStartMessage);
+            string dirName = Console.ReadLine();
+            History.WriteLine(dirName);
+            if (!Config.SetCurrentDirectory(dirName))
+            {
+                return;
+            }
+            History.WriteBoth(Messages.actionCdCompeted);
+            History.WriteLineBoth(Directory.GetCurrentDirectory());
         }
     }
 }

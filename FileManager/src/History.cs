@@ -22,7 +22,7 @@ namespace FileManager
             
             Console.Clear();
 
-            using (StreamReader historyFile = new StreamReader(@"OperationsHistory.txt"))
+            using (StreamReader historyFile = new StreamReader(Config.historyPath))
             {
                 string s;
                 while ((s = historyFile.ReadLine()) != null)
@@ -36,7 +36,7 @@ namespace FileManager
         {
             TextWriter consoleOut = Console.Out;
             
-            using (FileStream historyFile = new FileStream(@"OperationsHistory.txt", FileMode.Append, FileAccess.Write))
+            using (FileStream historyFile = new FileStream(Config.historyPath, FileMode.Append, FileAccess.Write))
             {
                 using (StreamWriter writer = new StreamWriter(historyFile))
                 {
@@ -61,7 +61,7 @@ namespace FileManager
         
         public static void Write(Object str)
         {
-            using (StreamWriter historyFile = new StreamWriter(@"OperationsHistory.txt", true))
+            using (StreamWriter historyFile = new StreamWriter(Config.historyPath, true))
             {
                 historyFile.Write(str);
             }
@@ -69,7 +69,7 @@ namespace FileManager
 
         public static void WriteLine(Object str)
         {
-            using (StreamWriter historyFile = new StreamWriter(@"OperationsHistory.txt", true))
+            using (StreamWriter historyFile = new StreamWriter(Config.historyPath, true))
             {
                 historyFile.WriteLine(str);
             }
@@ -77,7 +77,7 @@ namespace FileManager
         
         public static void CleanHistory()
         {
-            File.WriteAllText(@"OperationsHistory.txt", String.Empty);
+            File.WriteAllText(Config.historyPath, String.Empty);
         }
     }
 }

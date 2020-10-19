@@ -18,6 +18,9 @@ namespace FileManager
                         Operations.DriveCd();
                         break;
 
+                    case 1:
+                        Operations.DirCd();
+                        break;
                     default:
                         throw new Exception("Operation doesn't exist!");
                 }

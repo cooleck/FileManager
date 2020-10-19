@@ -10,21 +10,43 @@ namespace FileManager
     public static class Config
     {
         public static PlatformID Platform = Environment.OSVersion.Platform;
-        public static string CurrentDirectory = Directory.GetCurrentDirectory();
         public static Char DirSep = Path.DirectorySeparatorChar;
+        public static string historyPath = Directory.GetCurrentDirectory() + @"/OperationsHistory.txt";
+
+        public static bool SetCurrentDirectory(string path)
+        {
+            try
+            {
+                Directory.SetCurrentDirectory(path);
+            }
+            catch (DirectoryNotFoundException)
+            {
+                History.WriteLineBoth(Errors.dirNotFoundError);
+                return false;
+            }
+            catch (UnauthorizedAccessException)
+            {
+                History.WriteLineBoth(Errors.accessError);
+                return false;
+            }
+
+            return true;
+        }
     }
     
     public static class Messages
     {
         public static string welcomeMessage = "Привет";
         public static string byeMessage = "Пока";
-        public static string continueMessage = "Нажмите любую кнопку для продолжениея или Esc для выхода.";
         public static string driveCdStartMessage = "Выберите диск";
         public static string actionCdCompeted = "Вы перешли в ";
+        public static string dirCdStartMessage = "Выберите папку";
     }
 
     public static class Errors
     {
         public static string unixError = "У Unix нет дисков!";
+        public static string dirNotFoundError = "Папка не найдена";
+        public static string accessError = "Отказано в доступе";
     }
 }
