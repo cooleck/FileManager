@@ -32,6 +32,10 @@ namespace FileManager
                 History.WriteLineBoth(Errors.accessError);
                 return false;
             }
+            catch
+            {
+                History.WriteLineBoth(Errors.incorrectPathError);
+            }
 
             return true;
         }
@@ -53,5 +57,6 @@ namespace FileManager
         public static string unixError = "У Unix нет дисков!";
         public static string dirNotFoundError = "Папка не найдена";
         public static string accessError = "Отказано в доступе";
+        public static string incorrectPathError = "Плохой путь.";
     }
 }

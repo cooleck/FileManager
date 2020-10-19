@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Text;
 
 namespace FileManager
 {
@@ -53,10 +54,17 @@ namespace FileManager
             Write(str);
         }
         
-        public static void WriteLineBoth(Object str = null)
+        public static void WriteLineBoth(Object str = null, Encoding encoding = null)
         {
+            if (encoding == null)
+            {
+                encoding = Config.systemEncoding;
+            }
+
+            Console.OutputEncoding = encoding;
             Console.WriteLine(str);
-            WriteLine(str);
+            Console.OutputEncoding = Config.systemEncoding;
+            WriteLine(str, encoding);
         }
         
         public static void Write(Object str = null)
@@ -67,9 +75,14 @@ namespace FileManager
             }
         }
 
-        public static void WriteLine(Object str = null)
+        public static void WriteLine(Object str = null, Encoding encoding = null)
         {
-            using (StreamWriter historyFile = new StreamWriter(Config.historyPath, true))
+            if (encoding == null)
+            {
+                encoding = Config.systemEncoding;
+            }
+
+            using (StreamWriter historyFile = new StreamWriter(Config.historyPath, true, encoding))
             {
                 historyFile.WriteLine(str);
             }

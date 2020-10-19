@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace FileManager
 {
@@ -81,19 +82,32 @@ namespace FileManager
 
         public static void FileLs()
         {
-            List<string> fileList = new List<string>(Directory.GetFiles(Directory.GetCurrentDirectory()).Select(x => Path.GetFileName(x)));
-            int fileItr = PrintFileListMenu(fileList);
-
-            if (fileItr == -1)
+            List<string> fileListOfFullPath = new List<string>(Directory.GetFiles(Directory.GetCurrentDirectory()));
+            List<string> fileList = new List<string>(fileListOfFullPath.Select(x => Path.GetFileName(x)));
+            int fileItr;
+            while ((fileItr = PrintFileListMenu(fileList)) != -1)
             {
-                return;
-            }
 
-            int encodingItr = PrintEncodingMenu();
+                int encodingItr = PrintEncodingMenu();
 
-            if (encodingItr == -1)
-            {
-                return;
+                switch (encodingItr)
+                {
+                    case 0:
+                        FileCat(fileListOfFullPath[fileItr], Encoding.UTF8);
+                        return;
+                    
+                    case 1:
+                        FileCat(fileListOfFullPath[fileItr], Encoding.UTF7);
+                        return;
+                    
+                    case 2:
+                        FileCat(fileListOfFullPath[fileItr], Encoding.UTF32);
+                        return;
+                    
+                    case 3:
+                        FileCat(fileListOfFullPath[fileItr], Encoding.ASCII);
+                        return;
+                }
             }
         }
 
@@ -101,6 +115,18 @@ namespace FileManager
         {
             return Menu.PrintMenu(encodingsList, Messages.fileEncodingStartMessage);
         }
-        
+
+        public static void FileCat(string path, Encoding encoding)
+        {
+            using (StreamReader file = new StreamReader(path))
+            {
+                string s;
+                while ((s = file.ReadLine()) != null)
+                {
+                    History.WriteLineBoth(s, encoding);
+                    s = file.ReadLine();
+                }
+            }
+        }
     }
 }
