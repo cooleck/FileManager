@@ -50,8 +50,10 @@ namespace FileManager
         public static string dirCdStartMessage = "Выберите папку.";
         public static string fileLsStartMessage = "Просмотр файлов. Выберите файл для вывода его содержимого.";
         public static string fileEncodingStartMessage = "Выберите кодировку:";
-        public static string fileCpStart1Message = "Введите название файла:";
-        public static string fileCpStart2Message = "Введите адрес копирования:";
+        public static string fileCpStart1Message = "Введите путь к файлу:";
+        public static string fileCpStart2Message = "Введите путь копирования:";
+        public static string fileMvStart1Message = "Введите путь к файлу:";
+        public static string fileMvStart2Message = "Введите путь перемещения: ";
     }
 
     public static class Errors

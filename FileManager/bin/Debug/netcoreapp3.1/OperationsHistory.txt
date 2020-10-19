@@ -2,21 +2,10 @@
 1. Просмотр списка дисков компьютера и выбор диска.
 2. Переход в другую директорию (выбор папки).
 3. Просмотр списка файлов в директории.
-4. 
-5. Копирование файла.	 <<
-Введите название файла:
-/home/cooleck/cheeck/file1.txt
-Введите адрес копирования:
+4. Копирование файла.
+5. Перемещение файла.	 <<
+Введите путь к файлу:
+../NewFile1.txt
+Введите путь перемещения: 
 .
-Файл /home/cooleck/cheeck/file1.txt скопирован в /home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/bin/Debug/netcoreapp3.1/file1.txt
-Привет!
-1. Просмотр списка дисков компьютера и выбор диска.
-2. Переход в другую директорию (выбор папки).
-3. Просмотр списка файлов в директории.
-4. 
-5. Копирование файла.	 <<
-Введите название файла:
-/home/cooleck/cheeck/file2.txt
-Введите адрес копирования:
-/home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/bin/Debug/netcoreapp3.1/
-Файл /home/cooleck/cheeck/file2.txt скопирован в /home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/bin/Debug/netcoreapp3.1/file2.txt
+Файл /home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/bin/Debug/NewFile1.txt перемещен в /home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/bin/Debug/netcoreapp3.1

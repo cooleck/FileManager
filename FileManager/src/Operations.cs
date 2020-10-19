@@ -13,7 +13,8 @@ namespace FileManager
             [0] = "Просмотр списка дисков компьютера и выбор диска.",
             [1] = "Переход в другую директорию (выбор папки).",
             [2] = "Просмотр списка файлов в директории.",
-            [3] = "Копирование файла."
+            [3] = "Копирование файла.",
+            [4] = "Перемещение файла."
         };
         
         public static List<string> encodingsList = new List<string>()
@@ -145,7 +146,6 @@ namespace FileManager
             History.WriteLineBoth(Messages.fileCpStart2Message);
             
             string destPath = Console.ReadLine();
-            string destName = "";
             History.WriteLine(destPath);
             if (!File.Exists(destPath))
             {
@@ -179,6 +179,51 @@ namespace FileManager
             }
             
             History.WriteLineBoth($"Файл {filePath} скопирован в {destPath}");
+        }
+
+        public static void FileMv()
+        {
+            History.WriteLineBoth(Messages.fileMvStart1Message);
+            string filePath = Console.ReadLine();
+            History.WriteLine(filePath);
+            if (!File.Exists(filePath))
+            {
+                History.WriteLineBoth(Errors.incorrectPathError);
+                return;
+            }
+
+            filePath = Path.GetFullPath(filePath);
+            
+            History.WriteLineBoth(Messages.fileMvStart2Message);
+            
+            string destPath = Console.ReadLine();
+            History.WriteLine(destPath);
+
+            if (!Directory.Exists(destPath))
+            {
+                History.WriteLineBoth(Errors.incorrectPathError);
+                return;
+            }
+
+            destPath = Path.GetFullPath(destPath);
+            destPath = Path.GetFullPath(destPath + "/" + Path.GetFileName(filePath));
+
+            try
+            {
+                File.Move(filePath, destPath);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                History.WriteLineBoth(Errors.accessError);
+                return;
+            }
+            catch
+            {
+                History.WriteLineBoth(Errors.incorrectPathError);
+                return;
+            }
+            
+            History.WriteLineBoth($"Файл {filePath} перемещен в {Path.GetDirectoryName(destPath)}");
         }
     }
 }
