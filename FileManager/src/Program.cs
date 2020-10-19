@@ -21,6 +21,11 @@ namespace FileManager
                     case 1:
                         Operations.DirCd();
                         break;
+                    
+                    case 2:
+                        Operations.FileLs();
+                        break;
+                    
                     default:
                         throw new Exception("Operation doesn't exist!");
                 }

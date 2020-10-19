@@ -18,7 +18,7 @@ namespace FileManager
         public static int PrintOperationsMenu()
         {
             List<string> operationList = new List<string>(operationsDict.Values);
-            return Menu.PrintMenu(operationList, Messages.welcomeMessage);
+            return Menu.PrintMenu(operationList, Messages.welcomeMessage, Messages.byeMessage);
         }
 
 
@@ -29,7 +29,7 @@ namespace FileManager
 
         public static void DriveCd()
         {
-            if (Config.Platform == PlatformID.Win32NT)
+            if (Config.Platform == PlatformID.Win32NT || true)
             {
                 List<string> driveList = new List<string>(DriveInfo.GetDrives().Select(x => x.ToString()));
                 int driveItr = PrintDriveCdMenu(driveList);
@@ -64,6 +64,22 @@ namespace FileManager
             }
             History.WriteBoth(Messages.actionCdCompeted);
             History.WriteLineBoth(Directory.GetCurrentDirectory());
+        }
+
+        private static int PrintFileListMenu(List<string> fileList)
+        {
+            return Menu.PrintMenu(fileList, Messages.fileLsStartMessage);
+        }
+
+        public static void FileLs()
+        {
+            List<string> fileList = new List<string>(Directory.GetFiles(Directory.GetCurrentDirectory()).Select(x => Path.GetFileName(x)));
+            int fileItr = PrintFileListMenu(fileList);
+
+            if (fileItr == -1)
+            {
+                return;
+            }
         }
     }
 }

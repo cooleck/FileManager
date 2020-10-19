@@ -38,7 +38,7 @@ namespace FileManager
             }
         }
 
-        public static int PrintMenu(List<string> optionsList, string startMessage)
+        public static int PrintMenu(List<string> optionsList, string startMessage = "", string finishMessage = "")
         {
             Console.CursorVisible = false;
             int cursorItr = 0;
@@ -68,8 +68,8 @@ namespace FileManager
                         return cursorItr;
 
                     case ConsoleKey.Escape:
-                        Console.WriteLine();
-                        Console.WriteLine(Messages.byeMessage);
+                        History.AddMenuToHistory(optionsList, optionsListLength);
+                        History.WriteBoth(finishMessage);
                         Console.CursorVisible = true;
                         return -1;
                 }

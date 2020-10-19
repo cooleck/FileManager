@@ -47,19 +47,19 @@ namespace FileManager
             Console.SetOut(consoleOut);
         }
 
-        public static void WriteBoth(Object str)
+        public static void WriteBoth(Object str = null)
         {
             Console.Write(str);
             Write(str);
         }
         
-        public static void WriteLineBoth(Object str)
+        public static void WriteLineBoth(Object str = null)
         {
             Console.WriteLine(str);
             WriteLine(str);
         }
         
-        public static void Write(Object str)
+        public static void Write(Object str = null)
         {
             using (StreamWriter historyFile = new StreamWriter(Config.historyPath, true))
             {
@@ -67,7 +67,7 @@ namespace FileManager
             }
         }
 
-        public static void WriteLine(Object str)
+        public static void WriteLine(Object str = null)
         {
             using (StreamWriter historyFile = new StreamWriter(Config.historyPath, true))
             {

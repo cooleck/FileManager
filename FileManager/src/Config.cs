@@ -41,6 +41,7 @@ namespace FileManager
         public static string driveCdStartMessage = "Выберите диск";
         public static string actionCdCompeted = "Вы перешли в ";
         public static string dirCdStartMessage = "Выберите папку";
+        public static string fileLsStartMessage = "Просмотр файлов. Выберите файл для вывода его содержимого.";
     }
 
     public static class Errors
