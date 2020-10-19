@@ -40,7 +40,7 @@ namespace FileManager
             return true;
         }
     }
-    
+
     public static class Messages
     {
         public static string welcomeMessage = "Привет!";
@@ -54,7 +54,11 @@ namespace FileManager
         public static string fileCpStart2Message = "Введите путь копирования:";
         public static string fileMvStart1Message = "Введите путь к файлу:";
         public static string fileMvStart2Message = "Введите путь перемещения: ";
-        public static string fileRmStartMessage = "Введите путь файла, который вы хотите удалить:";
+        public static string fileRmStartMessage = "Введите путь к файлу, который вы хотите удалить:";
+        public static string fileTouchStartMessage = "Введите путь и название файла, который вы хотите создать";
+
+        public static string FileTouchEditMessage = "Режим построкого ввода: отредактируйте, " +
+                                                    "если необходимо, файл и по окончании нажмите Esc в начале ввода строки.";
     }
 
     public static class Errors

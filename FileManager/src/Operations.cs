@@ -15,7 +15,8 @@ namespace FileManager
             [2] = "Просмотр списка файлов в директории.",
             [3] = "Копирование файла.",
             [4] = "Перемещение файла.",
-            [5] = "Удаление файла."
+            [5] = "Удаление файла.",
+            [6] = "Создание файла."
         };
         
         public static List<string> encodingsList = new List<string>()
@@ -40,7 +41,7 @@ namespace FileManager
 
         public static void DriveCd()
         {
-            if (Config.Platform == PlatformID.Win32NT || true)
+            if (Config.Platform == PlatformID.Win32NT)
             {
                 List<string> driveList = new List<string>(DriveInfo.GetDrives().Select(x => x.ToString()));
                 int driveItr = PrintDriveCdMenu(driveList);
@@ -256,6 +257,63 @@ namespace FileManager
             }
             
             History.WriteLineBoth($"Файл {filePath} успешно удален.");
+        }
+
+        public static void FileTouch()
+        {
+            int encodingItr = PrintEncodingMenu();
+            Encoding encoding;
+            switch (encodingItr)
+            {
+                case 0:
+                    encoding = Encoding.UTF8;
+                    break;
+
+                case 1:
+                    encoding = Encoding.UTF7;
+                    break;
+
+                case 2:
+                    encoding = Encoding.UTF32;
+                    break;
+
+                case 3:
+                    encoding = Encoding.ASCII;
+                    break;
+
+                case -1:
+                    return;
+                
+                default:
+                    return;
+            }
+            
+            History.WriteLineBoth(Messages.fileTouchStartMessage);
+            string filePath = Console.ReadLine();
+            History.WriteLine(filePath);
+            if (File.Exists(filePath) || !Directory.Exists(Path.GetDirectoryName(filePath)))
+            {
+                History.WriteLineBoth(Errors.incorrectPathError);
+                return;
+            }
+
+            filePath = Path.GetFullPath(filePath);
+
+            History.WriteLineBoth(Messages.FileTouchEditMessage);
+            
+            ConsoleKeyInfo key = Console.ReadKey(true);
+            string s = "";
+            using (StreamWriter file = new StreamWriter(filePath, false, encoding))
+            {
+                while (key.Key != ConsoleKey.Escape)
+                {
+                    s = Console.ReadLine();
+                    file.WriteLine(key.KeyChar + s);
+                    key = Console.ReadKey(true);
+                }
+            }
+            
+            History.WriteLineBoth($"Файл {filePath} успешно создан.");
         }
     }
 }

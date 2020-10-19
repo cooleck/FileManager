@@ -37,6 +37,10 @@ namespace FileManager
                     case 5:
                         Operations.FileRm();
                         break;
+                    
+                    case 6:
+                        Operations.FileTouch();
+                        break;
 
                     default:
                         throw new Exception("Operation doesn't exist!");
