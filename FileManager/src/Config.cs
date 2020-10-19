@@ -54,6 +54,7 @@ namespace FileManager
         public static string fileCpStart2Message = "Введите путь копирования:";
         public static string fileMvStart1Message = "Введите путь к файлу:";
         public static string fileMvStart2Message = "Введите путь перемещения: ";
+        public static string fileRmStartMessage = "Введите путь файла, который вы хотите удалить:";
     }
 
     public static class Errors

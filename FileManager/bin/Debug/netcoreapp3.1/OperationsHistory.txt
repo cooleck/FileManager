@@ -3,9 +3,8 @@
 2. Переход в другую директорию (выбор папки).
 3. Просмотр списка файлов в директории.
 4. Копирование файла.
-5. Перемещение файла.	 <<
-Введите путь к файлу:
-../NewFile1.txt
-Введите путь перемещения: 
-.
-Файл /home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/bin/Debug/NewFile1.txt перемещен в /home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/bin/Debug/netcoreapp3.1
+5. Перемещение файла.
+6. Удаление файла.	 <<
+Введите путь файла, который вы хотите удалить:
+./NewFile1.txt
+Файл /home/cooleck/hse/Proga/Peergrade2/FileManager/FileManager/bin/Debug/netcoreapp3.1/NewFile1.txt успешно удален.

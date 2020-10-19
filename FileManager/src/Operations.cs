@@ -14,7 +14,8 @@ namespace FileManager
             [1] = "Переход в другую директорию (выбор папки).",
             [2] = "Просмотр списка файлов в директории.",
             [3] = "Копирование файла.",
-            [4] = "Перемещение файла."
+            [4] = "Перемещение файла.",
+            [5] = "Удаление файла."
         };
         
         public static List<string> encodingsList = new List<string>()
@@ -224,6 +225,37 @@ namespace FileManager
             }
             
             History.WriteLineBoth($"Файл {filePath} перемещен в {Path.GetDirectoryName(destPath)}");
+        }
+
+        public static void FileRm()
+        {
+            History.WriteLineBoth(Messages.fileRmStartMessage);
+            string filePath = Console.ReadLine();
+            History.WriteLine(filePath);
+            if (!File.Exists(filePath))
+            {
+                History.WriteLineBoth(Errors.incorrectPathError);
+                return;
+            }
+
+            filePath = Path.GetFullPath(filePath);
+
+            try
+            {
+                File.Delete(filePath);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                History.WriteLineBoth(Errors.accessError);
+                return;
+            }
+            catch
+            {
+                History.WriteLineBoth(Errors.incorrectPathError);
+                return;
+            }
+            
+            History.WriteLineBoth($"Файл {filePath} успешно удален.");
         }
     }
 }

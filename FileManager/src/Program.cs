@@ -33,6 +33,10 @@ namespace FileManager
                     case 4:
                         Operations.FileMv();
                         break;
+                    
+                    case 5:
+                        Operations.FileRm();
+                        break;
 
                     default:
                         throw new Exception("Operation doesn't exist!");
