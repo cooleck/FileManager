@@ -11,12 +11,13 @@ namespace FileManager
         public static Dictionary<int, string> operationsDict = new Dictionary<int, string>()
         {
             [0] = "Просмотр списка дисков компьютера и выбор диска.",
-            [1] = "Переход в другую директорию (выбор папки).",
-            [2] = "Просмотр списка файлов в директории.",
+            [1] = "Переход в другую директорию.",
+            [2] = "Просмотр списка файлов в директории и вывод файла.",
             [3] = "Копирование файла.",
             [4] = "Перемещение файла.",
             [5] = "Удаление файла.",
-            [6] = "Создание файла."
+            [6] = "Создание файла.",
+            [7] = "Конкатенация файлов."
         };
         
         public static List<string> encodingsList = new List<string>()
@@ -30,13 +31,13 @@ namespace FileManager
         public static int PrintOperationsMenu()
         {
             List<string> operationList = new List<string>(operationsDict.Values);
-            return Menu.PrintMenu(operationList, Messages.welcomeMessage, Messages.byeMessage);
+            return Menu.PrintMenu(operationList, Messages.WelcomeMessage, Messages.ByeMessage);
         }
 
 
         public static int PrintDriveCdMenu(List<string> driveList)
         {
-            return Menu.PrintMenu(driveList, Messages.driveCdStartMessage);
+            return Menu.PrintMenu(driveList, Messages.DriveCdStartMessage);
         }
 
         public static void DriveCd()
@@ -56,31 +57,31 @@ namespace FileManager
                     return;
                 }
 
-                History.WriteBoth(Messages.actionCdCompeted);
+                History.WriteBoth(Messages.ActionCdCompeted);
                 History.WriteLineBoth(Directory.GetCurrentDirectory());
             }
             else
             {
-                History.WriteLineBoth(Errors.unixError);
+                History.WriteLineBoth(Errors.UnixError);
             }
         }
 
         public static void DirCd()
         {
-            History.WriteLineBoth(Messages.dirCdStartMessage);
+            History.WriteLineBoth(Messages.DirCdStartMessage);
             string dirName = Console.ReadLine();
             History.WriteLine(dirName);
             if (!Config.SetCurrentDirectory(dirName))
             {
                 return;
             }
-            History.WriteBoth(Messages.actionCdCompeted);
+            History.WriteBoth(Messages.ActionCdCompeted);
             History.WriteLineBoth(Directory.GetCurrentDirectory());
         }
 
         private static int PrintFileListMenu(List<string> fileList)
         {
-            return Menu.PrintMenu(fileList, Messages.fileLsStartMessage);
+            return Menu.PrintMenu(fileList, Messages.FileLsStartMessage);
         }
 
         public static void FileLs()
@@ -116,7 +117,7 @@ namespace FileManager
 
         public static int PrintEncodingMenu()
         {
-            return Menu.PrintMenu(encodingsList, Messages.fileEncodingStartMessage);
+            return Menu.PrintMenu(encodingsList, Messages.FileEncodingStartMessage);
         }
 
         public static void FileCat(string path, Encoding encoding)
@@ -127,25 +128,24 @@ namespace FileManager
                 while ((s = file.ReadLine()) != null)
                 {
                     History.WriteLineBoth(s, encoding);
-                    s = file.ReadLine();
                 }
             }
         }
 
         public static void FileCp()
         {
-            History.WriteLineBoth(Messages.fileCpStart1Message);
+            History.WriteLineBoth(Messages.FileCpStart1Message);
             string filePath = Console.ReadLine();
             History.WriteLine(filePath);
             if (!File.Exists(filePath))
             {
-                History.WriteLineBoth(Errors.incorrectPathError);
+                History.WriteLineBoth(Errors.IncorrectPathError);
                 return;
             }
 
             filePath = Path.GetFullPath(filePath);
             
-            History.WriteLineBoth(Messages.fileCpStart2Message);
+            History.WriteLineBoth(Messages.FileCpStart2Message);
             
             string destPath = Console.ReadLine();
             History.WriteLine(destPath);
@@ -153,7 +153,7 @@ namespace FileManager
             {
                 if (!Directory.Exists(destPath))
                 {
-                    History.WriteLineBoth(Errors.incorrectPathError);
+                    History.WriteLineBoth(Errors.IncorrectPathError);
                     return;
                 }
 
@@ -171,12 +171,12 @@ namespace FileManager
             }
             catch (UnauthorizedAccessException)
             {
-                History.WriteLineBoth(Errors.accessError);
+                History.WriteLineBoth(Errors.AccessError);
                 return;
             }
             catch
             {
-                History.WriteLineBoth(Errors.incorrectPathError);
+                History.WriteLineBoth(Errors.IncorrectPathError);
                 return;
             }
             
@@ -185,25 +185,25 @@ namespace FileManager
 
         public static void FileMv()
         {
-            History.WriteLineBoth(Messages.fileMvStart1Message);
+            History.WriteLineBoth(Messages.FileMvStart1Message);
             string filePath = Console.ReadLine();
             History.WriteLine(filePath);
             if (!File.Exists(filePath))
             {
-                History.WriteLineBoth(Errors.incorrectPathError);
+                History.WriteLineBoth(Errors.IncorrectPathError);
                 return;
             }
 
             filePath = Path.GetFullPath(filePath);
             
-            History.WriteLineBoth(Messages.fileMvStart2Message);
+            History.WriteLineBoth(Messages.FileMvStart2Message);
             
             string destPath = Console.ReadLine();
             History.WriteLine(destPath);
 
             if (!Directory.Exists(destPath))
             {
-                History.WriteLineBoth(Errors.incorrectPathError);
+                History.WriteLineBoth(Errors.IncorrectPathError);
                 return;
             }
 
@@ -216,12 +216,12 @@ namespace FileManager
             }
             catch (UnauthorizedAccessException)
             {
-                History.WriteLineBoth(Errors.accessError);
+                History.WriteLineBoth(Errors.AccessError);
                 return;
             }
             catch
             {
-                History.WriteLineBoth(Errors.incorrectPathError);
+                History.WriteLineBoth(Errors.IncorrectPathError);
                 return;
             }
             
@@ -230,12 +230,12 @@ namespace FileManager
 
         public static void FileRm()
         {
-            History.WriteLineBoth(Messages.fileRmStartMessage);
+            History.WriteLineBoth(Messages.FileRmStartMessage);
             string filePath = Console.ReadLine();
             History.WriteLine(filePath);
             if (!File.Exists(filePath))
             {
-                History.WriteLineBoth(Errors.incorrectPathError);
+                History.WriteLineBoth(Errors.IncorrectPathError);
                 return;
             }
 
@@ -247,12 +247,12 @@ namespace FileManager
             }
             catch (UnauthorizedAccessException)
             {
-                History.WriteLineBoth(Errors.accessError);
+                History.WriteLineBoth(Errors.AccessError);
                 return;
             }
             catch
             {
-                History.WriteLineBoth(Errors.incorrectPathError);
+                History.WriteLineBoth(Errors.IncorrectPathError);
                 return;
             }
             
@@ -288,12 +288,12 @@ namespace FileManager
                     return;
             }
             
-            History.WriteLineBoth(Messages.fileTouchStartMessage);
+            History.WriteLineBoth(Messages.FileTouchStartMessage);
             string filePath = Console.ReadLine();
             History.WriteLine(filePath);
             if (File.Exists(filePath) || !Directory.Exists(Path.GetDirectoryName(filePath)))
             {
-                History.WriteLineBoth(Errors.incorrectPathError);
+                History.WriteLineBoth(Errors.IncorrectPathError);
                 return;
             }
 
@@ -314,6 +314,60 @@ namespace FileManager
             }
             
             History.WriteLineBoth($"Файл {filePath} успешно создан.");
+        }
+
+        public static void FileConcat()
+        {
+            History.WriteLineBoth(Messages.FileConc1Message);
+            string fileRes = Console.ReadLine();
+            History.WriteLine(fileRes);
+            
+            if (File.Exists(fileRes) || !Directory.Exists(Path.GetDirectoryName(fileRes)))
+            {
+                History.WriteLineBoth(Errors.IncorrectPathError);
+                return;
+            }
+
+            fileRes = Path.GetFullPath(fileRes);
+
+            History.WriteLineBoth(Messages.FileConc2Message);
+            string fileFirst = Console.ReadLine();
+            History.WriteLine(fileFirst);
+            if (!File.Exists(fileFirst))
+            {
+                return;
+            }
+
+            History.WriteLineBoth(Messages.FileConc3Message);
+            string fileSecond = Console.ReadLine();
+            History.WriteLine(fileSecond);
+            if (!File.Exists(fileSecond))
+            {
+                return;
+            }
+
+            using (StreamWriter fileResStream = new StreamWriter(fileRes))
+            {
+                using (StreamReader fileFirstStream = new StreamReader(fileFirst))
+                {
+                    string s;
+                    while ((s = fileFirstStream.ReadLine()) != null)
+                    {
+                        fileResStream.WriteLine(s);
+                    }
+                }
+
+                using (StreamReader fileSecondStream = new StreamReader(fileSecond))
+                {
+                    string s;
+                    while ((s = fileSecondStream.ReadLine()) != null)
+                    {
+                        fileResStream.WriteLine(s);
+                    }
+                }
+            }
+            
+            History.WriteLineBoth($"Файлы {fileFirst} и {fileSecond} успешно сконкатенированы в {fileRes}.");
         }
     }
 }

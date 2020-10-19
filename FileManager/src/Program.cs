@@ -41,6 +41,10 @@ namespace FileManager
                     case 6:
                         Operations.FileTouch();
                         break;
+                    
+                    case 7:
+                        Operations.FileConcat();
+                        break;
 
                     default:
                         throw new Exception("Operation doesn't exist!");
