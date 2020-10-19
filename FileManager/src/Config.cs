@@ -9,8 +9,9 @@ namespace FileManager
 {
     public static class Config
     {
-        public static PlatformID platform = Environment.OSVersion.Platform;
-        public static string currentDirectory = Directory.GetCurrentDirectory();
+        public static PlatformID Platform = Environment.OSVersion.Platform;
+        public static string CurrentDirectory = Directory.GetCurrentDirectory();
+        public static Char DirSep = Path.DirectorySeparatorChar;
     }
     
     public static class Messages

@@ -64,11 +64,13 @@ namespace FileManager
                     case ConsoleKey.Enter:
                         History.WriteLine(startMessage);
                         History.AddMenuToHistory(optionsList, cursorItr);
+                        Console.CursorVisible = true;
                         return cursorItr;
 
                     case ConsoleKey.Escape:
                         Console.WriteLine();
                         Console.WriteLine(Messages.byeMessage);
+                        Console.CursorVisible = true;
                         return -1;
                 }
             }

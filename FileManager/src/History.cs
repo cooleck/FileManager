@@ -6,19 +6,19 @@ namespace FileManager
 {
     public static class History
     {
-        private static string _sep = "";
+        private static string space = "";
 
         public static void MakeSep(int cnt)
         {
             for (int i = 0; i < cnt; ++i)
             {
-                _sep += '\n';
+                space += '\n';
             }
         }
 
         public static void PrintHistory()
         {
-            Console.WriteLine(_sep);
+            Console.WriteLine(space);
             
             Console.Clear();
 

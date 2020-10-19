@@ -17,7 +17,7 @@ namespace FileManager
 
         public static int PrintOperationsMenu()
         {
-            List <string> operationList = new List<string>(operationsDict.Values);
+            List<string> operationList = new List<string>(operationsDict.Values);
             return Menu.PrintMenu(operationList, Messages.welcomeMessage);
         }
 
@@ -29,19 +29,24 @@ namespace FileManager
 
         public static void DriveCd()
         {
-            if (Config.platform == PlatformID.Win32NT)
+            if (Config.Platform == PlatformID.Win32NT)
             {
                 List<string> driveList = new List<string>(DriveInfo.GetDrives().Select(x => x.ToString()));
                 int driveItr = PrintDriveCdMenu(driveList);
-                Config.currentDirectory = driveList[driveItr];
+
+                if (driveItr == -1)
+                {
+                    return;
+                }
+
+                Config.CurrentDirectory = driveList[driveItr];
                 History.WriteBoth(Messages.actionCdCompeted);
-                History.WriteLineBoth(Config.currentDirectory);
+                History.WriteLineBoth(Config.CurrentDirectory);
             }
             else
             {
                 History.WriteLineBoth(Errors.unixError);
             }
-
         }
     }
 }
