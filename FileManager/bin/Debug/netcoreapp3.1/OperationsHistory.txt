@@ -3,3 +3,16 @@
 2. Переход в другую директорию (выбор папки).
 3. Просмотр списка файлов в директории.	 <<
 4. Вывод содержимого текстового файла в консоль в кодировке UTF-8.
+Просмотр файлов. Выберите файл для вывода его содержимого.
+1. FileManager
+2. FileManager.runtimeconfig.dev.json
+3. FileManager.deps.json
+4. FileManager.runtimeconfig.json
+5. FileManager.dll	 <<
+6. FileManager.pdb
+7. OperationsHistory.txt
+Выберите кодировку.
+1. UTF-8
+2. UTF-7
+3. UTF-32
+4. ASCII	 <<

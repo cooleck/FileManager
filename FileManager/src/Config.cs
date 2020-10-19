@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Net;
+using System.Net.Mime;
+using System.Text;
 
 namespace FileManager
 {
@@ -12,6 +14,7 @@ namespace FileManager
         public static PlatformID Platform = Environment.OSVersion.Platform;
         public static Char DirSep = Path.DirectorySeparatorChar;
         public static string historyPath = Directory.GetCurrentDirectory() + @"/OperationsHistory.txt";
+        public static Encoding systemEncoding = Console.OutputEncoding;
 
         public static bool SetCurrentDirectory(string path)
         {
@@ -42,6 +45,7 @@ namespace FileManager
         public static string actionCdCompeted = "Вы перешли в ";
         public static string dirCdStartMessage = "Выберите папку";
         public static string fileLsStartMessage = "Просмотр файлов. Выберите файл для вывода его содержимого.";
+        public static string fileEncodingStartMessage = "Выберите кодировку.";
     }
 
     public static class Errors

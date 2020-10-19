@@ -14,6 +14,14 @@ namespace FileManager
             [2] = "Просмотр списка файлов в директории.",
             [3] = "Вывод содержимого текстового файла в консоль в кодировке UTF-8."
         };
+        
+        public static List<string> encodingsList = new List<string>()
+        {
+            "UTF-8",
+            "UTF-7",
+            "UTF-32",
+            "ASCII"
+        };
 
         public static int PrintOperationsMenu()
         {
@@ -80,6 +88,19 @@ namespace FileManager
             {
                 return;
             }
+
+            int encodingItr = PrintEncodingMenu();
+
+            if (encodingItr == -1)
+            {
+                return;
+            }
         }
+
+        public static int PrintEncodingMenu()
+        {
+            return Menu.PrintMenu(encodingsList, Messages.fileEncodingStartMessage);
+        }
+        
     }
 }
