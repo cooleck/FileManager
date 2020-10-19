@@ -7,65 +7,63 @@ namespace FileManager
 {
     public static class Menu
     {
-        public static Dictionary<int, string> operationsDict = new Dictionary<int, string>()
-        {
-            [0] = "Просмотр списка дисков компьютера и выбор диска.",
-            [1] = "Переход в другую директорию (выбор папки).",
-            [2] = "Просмотр списка файлов в директории.",
-            [3] = "Вывод содержимого текстового файла в консоль в кодировке UTF-8."
-        };
-
-        public static void PrintListOfOperations(int cursorItr, TextWriter consoleOut, bool isHistory = false)
+        public static void PrintListOfOptions(List<string> optionList, int cursorItr, TextWriter consoleOut,
+            bool isHistory = false)
         {
             Console.SetOut(consoleOut);
 
-            foreach (var operation in operationsDict)
+            int itr = 0;
+            
+            foreach (var option in optionList)
             {
-                if (operation.Key == cursorItr)
+                if (itr == cursorItr)
                 {
                     Console.BackgroundColor = ConsoleColor.Gray;
-                    Console.Write($"{operation.Key + 1}.", true);
+                    Console.Write($"{itr + 1}.", true);
                     Console.ResetColor();
-                    Console.Write($" {operation.Value}");
+                    Console.Write($" {option}");
                     if (isHistory)
                     {
                         Console.Write("\t <<");
                     }
+
                     Console.WriteLine();
                 }
                 else
                 {
-                    Console.WriteLine("{0}. {1}", operation.Key + 1, operation.Value);
+                    Console.WriteLine("{0}. {1}", itr + 1, option);
                 }
+
+                itr++;
             }
         }
 
-        public static int OperationMenu()
+        public static int PrintMenu(List<string> optionsList, string startMessage)
         {
             Console.CursorVisible = false;
             int cursorItr = 0;
-            int dictLength = operationsDict.Count;
+            int optionsListLength = optionsList.Count;
 
             while (true)
             {
                 History.PrintHistory();
-                Console.WriteLine(Messages.welcomeMessage);
-                PrintListOfOperations(cursorItr, Console.Out);
+                Console.WriteLine(startMessage);
+                PrintListOfOptions(optionsList, cursorItr, Console.Out);
                 ConsoleKey key = Console.ReadKey(true).Key;
 
                 switch (key)
                 {
                     case ConsoleKey.UpArrow:
-                        cursorItr = (cursorItr - 1 + dictLength) % dictLength;
+                        cursorItr = (cursorItr - 1 + optionsListLength) % optionsListLength;
                         break;
 
                     case ConsoleKey.DownArrow:
-                        cursorItr = (cursorItr + 1) % dictLength;
+                        cursorItr = (cursorItr + 1) % optionsListLength;
                         break;
 
                     case ConsoleKey.Enter:
-                        History.WriteLine(Messages.welcomeMessage);
-                        History.AddMenuToHistory(cursorItr);
+                        History.WriteLine(startMessage);
+                        History.AddMenuToHistory(optionsList, cursorItr);
                         return cursorItr;
 
                     case ConsoleKey.Escape:

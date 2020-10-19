@@ -1,23 +1,24 @@
 using System;
 using System.IO;
+using System.Collections.Generic;
 
 namespace FileManager
 {
     public static class History
     {
-        private static string sep = "";
+        private static string _sep = "";
 
         public static void MakeSep(int cnt)
         {
             for (int i = 0; i < cnt; ++i)
             {
-                sep += '\n';
+                _sep += '\n';
             }
         }
 
         public static void PrintHistory()
         {
-            Console.WriteLine(sep);
+            Console.WriteLine(_sep);
             
             Console.Clear();
 
@@ -31,7 +32,7 @@ namespace FileManager
             }
         }
 
-        public static void AddMenuToHistory(int cursorItr)
+        public static void AddMenuToHistory(List<string> optionsList, int cursorItr)
         {
             TextWriter consoleOut = Console.Out;
             
@@ -39,20 +40,34 @@ namespace FileManager
             {
                 using (StreamWriter writer = new StreamWriter(historyFile))
                 {
-                    Menu.PrintListOfOperations(cursorItr, writer, true);
+                    Menu.PrintListOfOptions(optionsList, cursorItr, writer, true);
                 }
             }
             
             Console.SetOut(consoleOut);
         }
 
-        public static void WriteLineBoth(string str)
+        public static void WriteBoth(Object str)
+        {
+            Console.Write(str);
+            Write(str);
+        }
+        
+        public static void WriteLineBoth(Object str)
         {
             Console.WriteLine(str);
             WriteLine(str);
         }
+        
+        public static void Write(Object str)
+        {
+            using (StreamWriter historyFile = new StreamWriter(@"OperationsHistory.txt", true))
+            {
+                historyFile.Write(str);
+            }
+        }
 
-        public static void WriteLine(string str)
+        public static void WriteLine(Object str)
         {
             using (StreamWriter historyFile = new StreamWriter(@"OperationsHistory.txt", true))
             {

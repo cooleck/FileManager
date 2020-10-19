@@ -10,12 +10,12 @@ namespace FileManager
             History.MakeSep(1000);
             Console.Clear();
             int operationCode;
-            while ((operationCode = Menu.OperationMenu()) != -1) {
+            while ((operationCode = Operations.PrintOperationsMenu()) != -1) {
 
                 switch (operationCode)
                 {
                     case 0:
-                        Operations.DriverCd();
+                        Operations.DriveCd();
                         break;
 
                     default:
